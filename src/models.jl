@@ -62,6 +62,7 @@ end
 
 function jak_stat_model()
     f! = function (dx, x, p, t)
+        u = 1.0
         t1 = p[1]
         t2 = p[2]
         t3 = p[3]
@@ -94,15 +95,15 @@ function jak_stat_model()
         x8 = x[8]
         x9 = x[9]
         x10 = x[10]
-        dx[1] = t6 * x2 - t5 * x1 - 2.0 * t1 * t * x1
+        dx[1] = t6 * x2 - t5 * x1 - 2.0 * t1 * u * x1
         dx[2] = -t6 * x2 + t5 * x1
-        dx[3] = x6 * x3 * t2 - 3.0 * x3 * t2 + 2.0 * t1 * t * x1
+        dx[3] = x6 * x3 * t2 - 3.0 * x3 * t2 + 2.0 * t1 * u * x1
         dx[4] = -t3 * x4 - x6 * x3 * t2 + 3.0 * x3 * t2
         dx[5] = t3 * x4 - x5 * t4
         dx[6] = (-x6 * x3 * x10 * t7 * t13 - x6 * x3 * t7 - 92.0 * x6 * x10 * x1 * t8 * t13^2 - 92.0 * x6 * x10 * t8 * t13 - 92.0 * x6 * x1 * t8 * t13 - x6 * x1 * t7 * t13 * x4 - 92.0 * x6 * t8 - x6 * t7 * x4 + 276.0 * x10 * x1 * t8 * t13^2 + 276.0 * x10 * t8 * t13 + 276.0 * x1 * t8 * t13 + 276.0 * t8) / (x10 * x1 * t13^2 + x10 * t13 + x1 * t13 + 1.0)
         dx[7] = -92.0 * x7 * t10 + x7 * x6 * t9 - 3.0 * x7 * t9 + 15180.0 * t10
         dx[8] = -x7 * t11 + 165.0 * t11
-        dx[9] = -2.0 * x9 * t * t12
+        dx[9] = -2.0 * x9 * u * t12
         dx[10] = (-x8 * t16 * x10 + x8 * t14 - t16 * x10 * t15) / (x8 + t15)
         return nothing
     end
