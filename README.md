@@ -4,7 +4,8 @@ CIRA (Certified Identifiability and Reparameterization Analysis) is a Julia pack
 
 ## Features
 
-- Local structural identifiability through the numerical rank of the output sensitivity matrix.
+- Local structural identifiability from the numerical rank of the output sensitivity matrix.
+- Sensitivities computed with complex step differentiation, which is accurate to machine precision and free of subtractive cancellation.
 - Per parameter identifiability flags derived from column drop tests.
 - Practical identifiability scoring based on the Fisher information matrix.
 - Eight benchmark models spanning epidemiology, systems biology, pharmacology, biochemistry, ecology and virology.
@@ -45,6 +46,10 @@ julia --project=. scripts/reproduce_table2.jl
 ```
 julia --project=. -e "using Pkg; Pkg.test()"
 ```
+
+## Method
+
+For a model with states x, parameters p and observation g, the package integrates the system with a fixed step Runge-Kutta scheme and forms the observation trajectory. The sensitivity of that trajectory with respect to each parameter is obtained by complex step differentiation. The numerical rank of the stacked sensitivity matrix gives the number of locally identifiable parameter combinations. A parameter is reported as individually identifiable when removing its column reduces the rank. When the rank is smaller than the number of parameters, the model is not identifiable and the reparameterization dimension equals the rank.
 
 ## Package structure
 
