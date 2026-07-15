@@ -31,7 +31,7 @@ function seir_model()
         return nothing
     end
     g = function (x, p)
-        return [p[4] * x[3]]
+        return [p[4] * p[1] * x[1] * x[3]]
     end
     return Model("SEIR", "Epidemiology", 4, 4, [0.9, 0.4, 0.3, 0.6], [0.99, 0.0, 0.01, 0.0], f!, g, (0.0, 20.0), 41)
 end
@@ -75,7 +75,7 @@ function jak_stat_model()
         return nothing
     end
     g = function (x, p)
-        return [p[5] * (x[2] + x[3]), p[6] * x[4]]
+        return [p[5] * (x[2] + x[3]) + p[6], p[5] * x[4]]
     end
     return Model("JAK-STAT signalling", "Systems biology", 4, 6, [0.8, 0.5, 0.4, 0.3, 1.2, 0.9], [1.0, 0.0, 0.0, 0.0], f!, g, (0.0, 15.0), 31)
 end
@@ -95,7 +95,7 @@ function pk_model()
         return nothing
     end
     g = function (x, p)
-        return [x[2] / p[5]]
+        return [x[2] / (p[4] * p[5])]
     end
     return Model("Two-compartment PK (oral)", "Pharmacology", 3, 5, [1.0, 0.5, 0.3, 0.2, 2.0], [10.0, 0.0, 0.0], f!, g, (0.0, 24.0), 49)
 end
@@ -125,8 +125,8 @@ function lotka_volterra_model()
         gamma = p[4]
         X = x[1]
         Y = x[2]
-        dx[1] = alpha * X - beta * X * Y
-        dx[2] = delta * X * Y - gamma * Y
+        dx[1] = (alpha + beta) * X - delta * X * Y
+        dx[2] = -alpha * beta * Y + gamma * X * Y
         return nothing
     end
     g = function (x, p)
@@ -152,7 +152,7 @@ function hiv_model()
         return nothing
     end
     g = function (x, p)
-        return [x[3]]
+        return [p[6] * x[3]]
     end
     return Model("HIV viral dynamics", "Virology", 3, 6, [10.0, 0.1, 0.05, 0.5, 5.0, 3.0], [100.0, 0.0, 0.001], f!, g, (0.0, 10.0), 41)
 end
