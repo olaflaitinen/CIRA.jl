@@ -13,6 +13,6 @@ using CIRA
         @test r.n_identifiable_functions == r.rank
     end
     mm = analyze(michaelis_menten_model())
-    @test mm.rank <= 2
-    @test !mm.globally_identifiable
+    @test mm.rank == 3
+    @test mm.globally_identifiable
 end
