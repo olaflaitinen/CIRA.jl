@@ -1,0 +1,9 @@
+model,q,rank,all_params_finite_cv,max_cv,mean_cv
+SIR,2,2,yes,0.0956,0.0666
+SEIR,4,3,no,inf,inf
+Goodwin oscillator,6,4,no,inf,inf
+JAK-STAT signalling,6,4,no,inf,inf
+Two-compartment PK (oral),5,4,no,inf,inf
+Michaelis-Menten kinetics,3,2,no,inf,inf
+Lotka-Volterra,4,3,no,inf,inf
+HIV viral dynamics,6,5,no,inf,inf
