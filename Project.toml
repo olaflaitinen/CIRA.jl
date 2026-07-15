@@ -1,0 +1,17 @@
+name = "CIRA"
+uuid = "6b2d9a7c-3e41-4b8a-9c2d-7f1e5a8b3c6d"
+authors = ["Gustav Olaf Yunus Laitinen-Fredriksson Imanov <yunus.imanov@metropolia.fi>"]
+version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
+
+[compat]
+julia = "1.9"

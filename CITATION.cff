@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "CIRA.jl"
+version: "0.1.0"
+license: "MIT"
+authors:
+  - given-names: "Gustav Olaf Yunus"
+    family-names: "Laitinen-Fredriksson Imanov"
+    orcid: "https://orcid.org/0009-0006-5184-0810"
