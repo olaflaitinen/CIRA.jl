@@ -18,22 +18,24 @@ end
 function seir_model()
     f! = function (dx, x, p, t)
         beta = p[1]
-        sigma = p[2]
-        gamma = p[3]
-        rho = p[4]
+        v = p[2]
+        psi = p[3]
+        gamma = p[4]
         S = x[1]
         E = x[2]
         I = x[3]
+        Q = x[5]
         dx[1] = -beta * S * I
-        dx[2] = beta * S * I - sigma * E
-        dx[3] = sigma * E - gamma * I
-        dx[4] = gamma * I
+        dx[2] = beta * S * I - v * E
+        dx[3] = v * E - psi * I - (1.0 - psi) * gamma * I
+        dx[4] = gamma * Q + (1.0 - psi) * gamma * I
+        dx[5] = -gamma * Q + psi * I
         return nothing
     end
     g = function (x, p)
-        return [p[4] * p[1] * x[1] * x[3]]
+        return [x[5]]
     end
-    return Model("SEIR", "Epidemiology", 4, 4, [0.9, 0.4, 0.3, 0.6], [0.99, 0.0, 0.01, 0.0], f!, g, (0.0, 20.0), 41)
+    return Model("SEIR_1_io", "Epidemiology", 5, 4, [0.9, 0.4, 0.3, 0.6], [0.99, 0.0, 0.01, 0.0, 0.0], f!, g, (0.0, 20.0), 41)
 end
 
 function goodwin_model()
@@ -60,44 +62,99 @@ end
 
 function jak_stat_model()
     f! = function (dx, x, p, t)
-        k1 = p[1]
-        k2 = p[2]
-        k3 = p[3]
-        k4 = p[4]
+        t1 = p[1]
+        t2 = p[2]
+        t3 = p[3]
+        t4 = p[4]
+        t5 = p[5]
+        t6 = p[6]
+        t7 = p[7]
+        t8 = p[8]
+        t9 = p[9]
+        t10 = p[10]
+        t11 = p[11]
+        t12 = p[12]
+        t13 = p[13]
+        t14 = p[14]
+        t15 = p[15]
+        t16 = p[16]
+        t17 = p[17]
+        t18 = p[18]
+        t19 = p[19]
+        t20 = p[20]
+        t21 = p[21]
+        t22 = p[22]
         x1 = x[1]
         x2 = x[2]
         x3 = x[3]
         x4 = x[4]
-        dx[1] = -k1 * x1
-        dx[2] = k1 * x1 - k2 * x2
-        dx[3] = k2 * x2 - k3 * x3
-        dx[4] = k3 * x3 - k4 * x4
+        x5 = x[5]
+        x6 = x[6]
+        x7 = x[7]
+        x8 = x[8]
+        x9 = x[9]
+        x10 = x[10]
+        dx[1] = t6 * x2 - t5 * x1 - 2.0 * t1 * t * x1
+        dx[2] = -t6 * x2 + t5 * x1
+        dx[3] = x6 * x3 * t2 - 3.0 * x3 * t2 + 2.0 * t1 * t * x1
+        dx[4] = -t3 * x4 - x6 * x3 * t2 + 3.0 * x3 * t2
+        dx[5] = t3 * x4 - x5 * t4
+        dx[6] = (-x6 * x3 * x10 * t7 * t13 - x6 * x3 * t7 - 92.0 * x6 * x10 * x1 * t8 * t13^2 - 92.0 * x6 * x10 * t8 * t13 - 92.0 * x6 * x1 * t8 * t13 - x6 * x1 * t7 * t13 * x4 - 92.0 * x6 * t8 - x6 * t7 * x4 + 276.0 * x10 * x1 * t8 * t13^2 + 276.0 * x10 * t8 * t13 + 276.0 * x1 * t8 * t13 + 276.0 * t8) / (x10 * x1 * t13^2 + x10 * t13 + x1 * t13 + 1.0)
+        dx[7] = -92.0 * x7 * t10 + x7 * x6 * t9 - 3.0 * x7 * t9 + 15180.0 * t10
+        dx[8] = -x7 * t11 + 165.0 * t11
+        dx[9] = -2.0 * x9 * t * t12
+        dx[10] = (-x8 * t16 * x10 + x8 * t14 - t16 * x10 * t15) / (x8 + t15)
         return nothing
     end
     g = function (x, p)
-        return [p[5] * (x[2] + x[3]) + p[6], p[5] * x[4]]
+        t11 = p[11]
+        t17 = p[17]
+        t18 = p[18]
+        t19 = p[19]
+        t20 = p[20]
+        t21 = p[21]
+        t22 = p[22]
+        return [
+            x[3] + x[1] + x[4],
+            -x[9] * t18 + x[5] * t18 + t18 * x[3] + t18 * x[4] + (1.0 / 3.0) * t18,
+            t19 * x[5] + t19 * x[4],
+            -t20 * x[6] + 3.0 * t20,
+            x[8] * t21,
+            (x[8] * t22 * t17) / t11,
+            x[10],
+            -x[7] + 165.0,
+        ]
     end
-    return Model("JAK-STAT signalling", "Systems biology", 4, 6, [0.8, 0.5, 0.4, 0.3, 1.2, 0.9], [1.0, 0.0, 0.0, 0.0], f!, g, (0.0, 15.0), 31)
+    return Model("JAK-STAT 1", "Systems biology", 10, 22, [
+        0.2, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2,
+        1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2,
+    ], [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 165.0, 1.0], f!, g, (0.0, 15.0), 31)
 end
 
 function pk_model()
     f! = function (dx, x, p, t)
         ka = p[1]
-        k12 = p[2]
-        k21 = p[3]
-        ke = p[4]
-        Ad = x[1]
-        Ac = x[2]
-        Ap = x[3]
-        dx[1] = -ka * Ad
-        dx[2] = ka * Ad - (k12 + ke) * Ac + k21 * Ap
-        dx[3] = k12 * Ac - k21 * Ap
+        kc = p[2]
+        a1 = p[3]
+        a2 = p[4]
+        b1 = p[5]
+        b2 = p[6]
+        n = p[7]
+        x0 = x[1]
+        x1 = x[2]
+        x2 = x[3]
+        x3 = x[4]
+        denom = ka * kc + ka * x0 + kc * x2
+        dx[1] = (-ka * n * x0 - ka * kc * a1 * x0 + ka * kc * a1 * x1 - ka * a1 * x0^2 + ka * a1 * x0 * x1 - kc * a1 * x0 * x2 + kc * a1 * x1 * x2) / denom
+        dx[2] = a2 * x0 - a2 * x1
+        dx[3] = (ka * kc * b1 * x3 - ka * kc * b1 * x2 + ka * b1 * x0 * x3 - ka * b1 * x0 * x2 - n * kc * x2 + kc * b1 * x3 * x2 - kc * b1 * x2^2) / denom
+        dx[4] = -b2 * x3 + b2 * x2
         return nothing
     end
     g = function (x, p)
-        return [x[2] / (p[4] * p[5])]
+        return [x[1]]
     end
-    return Model("Two-compartment PK (oral)", "Pharmacology", 3, 5, [1.0, 0.5, 0.3, 0.2, 2.0], [10.0, 0.0, 0.0], f!, g, (0.0, 24.0), 49)
+    return Model("Pharm", "Pharmacology", 4, 7, [1.0, 1.0, 0.5, 0.3, 0.2, 0.4, 10.0], [5.0, 0.0, 0.0, 0.0], f!, g, (0.0, 24.0), 49)
 end
 
 function michaelis_menten_model()
@@ -119,42 +176,50 @@ end
 
 function lotka_volterra_model()
     f! = function (dx, x, p, t)
-        alpha = p[1]
-        beta = p[2]
-        delta = p[3]
-        gamma = p[4]
-        X = x[1]
-        Y = x[2]
-        dx[1] = (alpha + beta) * X - delta * X * Y
-        dx[2] = -alpha * beta * Y + gamma * X * Y
+        a = p[1]
+        b = p[2]
+        c = p[3]
+        d = p[4]
+        x1 = x[1]
+        x2 = x[2]
+        dx[1] = (a + b) * x1 - c * x1 * x2
+        dx[2] = -a * b * x2 + d * x1 * x2
         return nothing
     end
     g = function (x, p)
         return [x[1]]
     end
-    return Model("Lotka-Volterra", "Ecology", 2, 4, [1.0, 0.5, 0.4, 0.6], [1.0, 0.5], f!, g, (0.0, 15.0), 31)
+    return Model("Modified LV for testing", "Ecology", 2, 4, [1.0, 2.0, 0.4, 0.6], [1.0, 0.5], f!, g, (0.0, 15.0), 31)
 end
 
 function hiv_model()
     f! = function (dx, x, p, t)
-        s = p[1]
+        lm = p[1]
         d = p[2]
         beta = p[3]
-        delta = p[4]
-        prod = p[5]
-        c = p[6]
-        T = x[1]
-        I = x[2]
-        V = x[3]
-        dx[1] = s - d * T - beta * T * V
-        dx[2] = beta * T * V - delta * I
-        dx[3] = prod * I - c * V
+        a = p[4]
+        k = p[5]
+        u = p[6]
+        b = p[7]
+        c = p[8]
+        q = p[9]
+        h = p[10]
+        x_state = x[1]
+        y_state = x[2]
+        v_state = x[3]
+        w_state = x[4]
+        z_state = x[5]
+        dx[1] = lm - x_state * d - x_state * v_state * beta
+        dx[2] = x_state * v_state * beta - a * y_state
+        dx[3] = k * y_state - v_state * u
+        dx[4] = -b * w_state + c * w_state * x_state * y_state - c * w_state * q * y_state
+        dx[5] = c * w_state * q * y_state - h * z_state
         return nothing
     end
     g = function (x, p)
-        return [p[6] * x[3]]
+        return [x[4], x[5]]
     end
-    return Model("HIV viral dynamics", "Virology", 3, 6, [10.0, 0.1, 0.05, 0.5, 5.0, 3.0], [100.0, 0.0, 0.001], f!, g, (0.0, 10.0), 41)
+    return Model("HIV", "Virology", 5, 10, [10.0, 0.1, 0.05, 0.5, 5.0, 3.0, 0.7, 0.8, 0.9, 1.1], [100.0, 0.0, 0.001, 0.0, 0.0], f!, g, (0.0, 10.0), 41)
 end
 
 function benchmark_models()
