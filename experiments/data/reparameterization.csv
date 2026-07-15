@@ -1,9 +1,9 @@
 model,q,rank,reduced_full_rank,cond_full_fisher,cond_reduced_fisher,reduced_is_identifiable
-SIR,2,2,2,5.461e+01,5.461e+01,yes
-SEIR,4,3,3,8.055e+32,1.384e+05,yes
-Goodwin oscillator,6,4,4,9.325e+32,8.093e+05,yes
-JAK-STAT signalling,6,4,4,3.863e+32,5.990e+01,yes
-Two-compartment PK (oral),5,4,4,7.188e+32,8.485e+05,yes
-Michaelis-Menten kinetics,3,2,2,7.016e+31,3.434e+04,yes
-Lotka-Volterra,4,3,3,1.080e+32,1.384e+01,yes
-HIV viral dynamics,6,5,5,2.332e+40,1.599e+12,yes
+SIR,2,2,2,5.460882e+01,5.460882e+01,yes
+SEIR,4,3,3,1.875306e+32,1.384442e+05,yes
+Goodwin,6,4,4,6.319618e+32,8.092904e+05,yes
+JAK-STAT,6,4,4,8.156634e+32,5.990078e+01,yes
+PK,5,4,4,2.180130e+33,8.485483e+05,yes
+Michaelis-Menten,3,2,2,7.015204e+31,3.433797e+04,yes
+Lotka-Volterra,4,3,3,1.209617e+32,1.384092e+01,yes
+HIV,6,5,5,2.717824e+40,1.598549e+12,yes

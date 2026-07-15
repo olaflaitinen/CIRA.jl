@@ -75,12 +75,12 @@ function exp2_practical(rel = 0.05)
         if r == q
             Finv = inv(F)
             cv = sqrt.(abs.(diag(Finv))) ./ abs.(m.p_true)
-            push!(rows, @sprintf("%s,%d,%d,yes,%.4f,%.4f", m.name, q, r, maximum(cv), sum(cv) / q))
+            push!(rows, @sprintf("%s,%d,%d,yes,%.4f,%.4f,%.4f", m.name, q, r, cv[1], cv[2], maximum(cv)))
         else
-            push!(rows, @sprintf("%s,%d,%d,no,inf,inf", m.name, q, r))
+            push!(rows, @sprintf("%s,%d,%d,no,inf,inf,inf", m.name, q, r))
         end
     end
-    write_csv("practical.csv", "model,q,rank,all_params_finite_cv,max_cv,mean_cv", rows)
+    write_csv("practical.csv", "model,q,rank,all_params_finite_cv,cv_p1,cv_p2,max_cv", rows)
 end
 
 function exp3_reparam(rel = 0.05)
@@ -131,12 +131,16 @@ end
 function exp5_robustness(rel = 0.05)
     println("E5 robustness")
     factors = [0.75, 1.0, 1.25, 1.5, 2.0, 3.0]
+    target = Dict("SIR" => 2, "SEIR" => 3, "Goodwin oscillator" => 4,
+        "JAK-STAT signalling" => 4, "Two-compartment PK (oral)" => 4,
+        "Michaelis-Menten kinetics" => 2, "Lotka-Volterra" => 3,
+        "HIV viral dynamics" => 5)
     rank_rows = String[]
     gap_rows = String[]
     for m in benchmark_models()
         base = m.n_times - 1
-        grids = sort(unique([Int(round(base * f)) for f in factors]))
-        for gs in grids
+        for fac in factors
+            gs = Int(round(base * fac))
             m2 = rebuild_grid(m, gs + 1)
             S = CIRA.sensitivity_matrix(m2, m2.p_true)
             if !all(isfinite, S)
@@ -146,12 +150,12 @@ function exp5_robustness(rel = 0.05)
             smax = sv[1]
             small_id = sv[r] / smax
             large_null = r < length(sv) ? sv[r + 1] / smax : 0.0
-            push!(rank_rows, @sprintf("%s,%d,%d", m.name, gs + 1, r))
-            push!(gap_rows, @sprintf("%s,%d,%.3e,%.3e", m.name, gs + 1, small_id, large_null))
+            push!(rank_rows, @sprintf("%s,%.2f,%d,%d,%d", m.name, fac, gs + 1, r, target[m.name]))
+            push!(gap_rows, @sprintf("%s,%.2f,%d,%.3e,%.3e", m.name, fac, gs + 1, small_id, large_null))
         end
     end
-    write_csv("robustness_rank.csv", "model,n_times,rank", rank_rows)
-    write_csv("robustness_gap.csv", "model,n_times,smallest_identifiable_sv,largest_null_sv", gap_rows)
+    write_csv("robustness_rank.csv", "model,factor,n_times,rank,target_rank", rank_rows)
+    write_csv("robustness_gap.csv", "model,factor,n_times,smallest_identifiable_sv,largest_null_sv", gap_rows)
 
     sig = [0.01, 0.02, 0.05, 0.1, 0.2]
     noise_rows = String[]

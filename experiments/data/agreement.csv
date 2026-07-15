@@ -1,9 +1,9 @@
 model,cira_verdict,cira_nif,literature_verdict,literature_nif,reference,agreement
 SIR,identifiable,2,identifiable,2,Tuncer and Le 2018,yes
 SEIR,non-identifiable,3,non-identifiable,3,Chowell 2017,yes
-Goodwin oscillator,non-identifiable,4,non-identifiable,4,Villaverde et al. 2016,yes
-JAK-STAT signalling,non-identifiable,4,non-identifiable,4,Swameye et al. 2003,yes
-Two-compartment PK (oral),non-identifiable,4,non-identifiable,4,Janzen et al. 2016,yes
-Michaelis-Menten kinetics,non-identifiable,2,non-identifiable,2,Raue et al. 2009,yes
+Goodwin,non-identifiable,4,non-identifiable,4,Villaverde et al. 2016,yes
+JAK-STAT,non-identifiable,4,non-identifiable,4,Swameye et al. 2003,yes
+PK,non-identifiable,4,non-identifiable,4,Janzen et al. 2016,yes
+Michaelis-Menten,non-identifiable,2,non-identifiable,2,Raue et al. 2009,yes
 Lotka-Volterra,non-identifiable,3,non-identifiable,3,Remien et al. 2021,yes
-HIV viral dynamics,non-identifiable,5,non-identifiable,5,Miao et al. 2011,yes
+HIV,non-identifiable,5,non-identifiable,5,Miao et al. 2011,yes

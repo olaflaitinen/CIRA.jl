@@ -1,49 +1,49 @@
-model,n_times,rank
-SIR,31,2
-SIR,41,2
-SIR,51,2
-SIR,61,2
-SIR,81,2
-SIR,121,2
-SEIR,31,3
-SEIR,41,3
-SEIR,51,3
-SEIR,61,3
-SEIR,81,3
-SEIR,121,3
-Goodwin oscillator,31,4
-Goodwin oscillator,41,4
-Goodwin oscillator,51,4
-Goodwin oscillator,61,4
-Goodwin oscillator,81,4
-Goodwin oscillator,121,4
-JAK-STAT signalling,23,4
-JAK-STAT signalling,31,4
-JAK-STAT signalling,39,4
-JAK-STAT signalling,46,4
-JAK-STAT signalling,61,4
-JAK-STAT signalling,91,4
-Two-compartment PK (oral),37,4
-Two-compartment PK (oral),49,4
-Two-compartment PK (oral),61,4
-Two-compartment PK (oral),73,4
-Two-compartment PK (oral),97,4
-Two-compartment PK (oral),145,4
-Michaelis-Menten kinetics,31,2
-Michaelis-Menten kinetics,41,2
-Michaelis-Menten kinetics,51,2
-Michaelis-Menten kinetics,61,2
-Michaelis-Menten kinetics,81,2
-Michaelis-Menten kinetics,121,2
-Lotka-Volterra,23,3
-Lotka-Volterra,31,3
-Lotka-Volterra,39,3
-Lotka-Volterra,46,3
-Lotka-Volterra,61,3
-Lotka-Volterra,91,3
-HIV viral dynamics,31,5
-HIV viral dynamics,41,5
-HIV viral dynamics,51,5
-HIV viral dynamics,61,5
-HIV viral dynamics,81,5
-HIV viral dynamics,121,5
+model,factor,n_times,rank,target_rank
+SIR,0.75,31,2,2
+SIR,1.00,41,2,2
+SIR,1.25,51,2,2
+SIR,1.50,61,2,2
+SIR,2.00,81,2,2
+SIR,3.00,121,2,2
+SEIR,0.75,31,3,3
+SEIR,1.00,41,3,3
+SEIR,1.25,51,3,3
+SEIR,1.50,61,3,3
+SEIR,2.00,81,3,3
+SEIR,3.00,121,3,3
+Goodwin,0.75,31,4,4
+Goodwin,1.00,41,4,4
+Goodwin,1.25,51,4,4
+Goodwin,1.50,61,4,4
+Goodwin,2.00,81,4,4
+Goodwin,3.00,121,4,4
+JAK-STAT,0.75,23,4,4
+JAK-STAT,1.00,31,4,4
+JAK-STAT,1.25,39,4,4
+JAK-STAT,1.50,46,4,4
+JAK-STAT,2.00,61,4,4
+JAK-STAT,3.00,91,4,4
+PK,0.75,37,4,4
+PK,1.00,49,4,4
+PK,1.25,61,4,4
+PK,1.50,73,4,4
+PK,2.00,97,4,4
+PK,3.00,145,4,4
+Michaelis-Menten,0.75,31,2,2
+Michaelis-Menten,1.00,41,2,2
+Michaelis-Menten,1.25,51,2,2
+Michaelis-Menten,1.50,61,2,2
+Michaelis-Menten,2.00,81,2,2
+Michaelis-Menten,3.00,121,2,2
+Lotka-Volterra,0.75,23,3,3
+Lotka-Volterra,1.00,31,3,3
+Lotka-Volterra,1.25,39,3,3
+Lotka-Volterra,1.50,46,3,3
+Lotka-Volterra,2.00,61,3,3
+Lotka-Volterra,3.00,91,3,3
+HIV,0.75,31,5,5
+HIV,1.00,41,5,5
+HIV,1.25,51,5,5
+HIV,1.50,61,5,5
+HIV,2.00,81,5,5
+HIV,3.00,121,5,5

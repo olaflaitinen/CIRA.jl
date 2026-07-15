@@ -1,49 +1,49 @@
-model,n_times,smallest_identifiable_sv,largest_null_sv
-SIR,31,1.358e-01,0.000e+00
-SIR,41,1.353e-01,0.000e+00
-SIR,51,1.350e-01,0.000e+00
-SIR,61,1.349e-01,0.000e+00
-SIR,81,1.346e-01,0.000e+00
-SIR,121,1.344e-01,0.000e+00
-SEIR,31,2.673e-03,2.757e-17
-SEIR,41,2.688e-03,3.523e-17
-SEIR,51,2.696e-03,9.091e-17
-SEIR,61,2.702e-03,5.420e-17
-SEIR,81,2.708e-03,5.690e-17
-SEIR,121,2.715e-03,6.439e-17
-Goodwin oscillator,31,1.113e-03,5.478e-17
-Goodwin oscillator,41,1.112e-03,6.836e-17
-Goodwin oscillator,51,1.110e-03,4.697e-17
-Goodwin oscillator,61,1.110e-03,6.471e-17
-Goodwin oscillator,81,1.109e-03,7.564e-17
-Goodwin oscillator,121,1.108e-03,6.241e-17
-JAK-STAT signalling,23,1.332e-01,1.070e-16
-JAK-STAT signalling,31,1.292e-01,8.083e-17
-JAK-STAT signalling,39,1.265e-01,7.081e-17
-JAK-STAT signalling,46,1.249e-01,1.296e-16
-JAK-STAT signalling,61,1.227e-01,1.691e-16
-JAK-STAT signalling,91,1.205e-01,1.401e-16
-Two-compartment PK (oral),37,9.878e-04,1.799e-17
-Two-compartment PK (oral),49,1.086e-03,3.730e-17
-Two-compartment PK (oral),61,1.118e-03,1.880e-17
-Two-compartment PK (oral),73,1.131e-03,2.515e-17
-Two-compartment PK (oral),97,1.139e-03,2.832e-17
-Two-compartment PK (oral),145,1.142e-03,2.872e-17
-Michaelis-Menten kinetics,31,3.008e-01,1.056e-16
-Michaelis-Menten kinetics,41,5.397e-03,1.194e-16
-Michaelis-Menten kinetics,51,1.287e-01,4.420e-17
-Michaelis-Menten kinetics,61,6.916e-02,3.682e-17
-Michaelis-Menten kinetics,81,6.204e-02,2.382e-17
-Michaelis-Menten kinetics,121,6.606e-02,3.536e-17
-Lotka-Volterra,23,2.207e-01,6.674e-17
-Lotka-Volterra,31,2.688e-01,9.623e-17
-Lotka-Volterra,39,2.589e-01,1.476e-16
-Lotka-Volterra,46,2.561e-01,1.109e-16
-Lotka-Volterra,61,2.540e-01,8.775e-17
-Lotka-Volterra,91,2.528e-01,2.066e-16
-HIV viral dynamics,31,8.146e-07,7.202e-21
-HIV viral dynamics,41,7.909e-07,6.549e-21
-HIV viral dynamics,51,7.765e-07,6.188e-21
-HIV viral dynamics,61,7.669e-07,7.842e-21
-HIV viral dynamics,81,7.548e-07,4.155e-21
-HIV viral dynamics,121,7.426e-07,5.061e-21
+model,factor,n_times,smallest_identifiable_sv,largest_null_sv
+SIR,0.75,31,1.358e-01,0.000e+00
+SIR,1.00,41,1.353e-01,0.000e+00
+SIR,1.25,51,1.350e-01,0.000e+00
+SIR,1.50,61,1.349e-01,0.000e+00
+SIR,2.00,81,1.346e-01,0.000e+00
+SIR,3.00,121,1.344e-01,0.000e+00
+SEIR,0.75,31,2.673e-03,2.769e-17
+SEIR,1.00,41,2.688e-03,7.302e-17
+SEIR,1.25,51,2.696e-03,1.425e-16
+SEIR,1.50,61,2.702e-03,5.661e-17
+SEIR,2.00,81,2.708e-03,5.686e-17
+SEIR,3.00,121,2.715e-03,6.418e-17
+Goodwin,0.75,31,1.113e-03,5.424e-17
+Goodwin,1.00,41,1.112e-03,6.613e-17
+Goodwin,1.25,51,1.110e-03,5.990e-17
+Goodwin,1.50,61,1.110e-03,5.589e-17
+Goodwin,2.00,81,1.109e-03,7.271e-17
+Goodwin,3.00,121,1.108e-03,6.120e-17
+JAK-STAT,0.75,23,1.332e-01,1.655e-16
+JAK-STAT,1.00,31,1.292e-01,5.143e-17
+JAK-STAT,1.25,39,1.265e-01,7.402e-17
+JAK-STAT,1.50,46,1.249e-01,1.767e-16
+JAK-STAT,2.00,61,1.227e-01,1.838e-16
+JAK-STAT,3.00,91,1.205e-01,1.220e-16
+PK,0.75,37,9.878e-04,2.030e-17
+PK,1.00,49,1.086e-03,2.142e-17
+PK,1.25,61,1.118e-03,2.154e-17
+PK,1.50,73,1.131e-03,1.953e-17
+PK,2.00,97,1.139e-03,2.221e-17
+PK,3.00,145,1.142e-03,5.997e-17
+Michaelis-Menten,0.75,31,3.008e-01,8.736e-17
+Michaelis-Menten,1.00,41,5.397e-03,1.194e-16
+Michaelis-Menten,1.25,51,1.287e-01,4.115e-17
+Michaelis-Menten,1.50,61,6.916e-02,3.682e-17
+Michaelis-Menten,2.00,81,6.204e-02,2.382e-17
+Michaelis-Menten,3.00,121,6.606e-02,3.536e-17
+Lotka-Volterra,0.75,23,2.207e-01,1.873e-17
+Lotka-Volterra,1.00,31,2.688e-01,9.092e-17
+Lotka-Volterra,1.25,39,2.589e-01,1.393e-16
+Lotka-Volterra,1.50,46,2.561e-01,1.056e-16
+Lotka-Volterra,2.00,61,2.540e-01,7.565e-17
+Lotka-Volterra,3.00,91,2.528e-01,1.614e-16
+HIV,0.75,31,8.146e-07,7.214e-21
+HIV,1.00,41,7.909e-07,6.066e-21
+HIV,1.25,51,7.765e-07,4.981e-21
+HIV,1.50,61,7.669e-07,8.380e-21
+HIV,2.00,81,7.548e-07,4.995e-21
+HIV,3.00,121,7.426e-07,4.973e-21
