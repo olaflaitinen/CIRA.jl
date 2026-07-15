@@ -129,7 +129,7 @@ function jak_stat_model()
     return Model("JAK-STAT 1", "Systems biology", 10, 22, [
         0.2, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2,
         1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2,
-    ], [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 165.0, 1.0], f!, g, (0.0, 15.0), 31)
+    ], [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 165.0, 1.0], f!, g, (0.0, 1.0), 31)
 end
 
 function pk_model()
@@ -190,7 +190,7 @@ function lotka_volterra_model()
     g = function (x, p)
         return [x[1]]
     end
-    return Model("Modified LV for testing", "Ecology", 2, 4, [1.0, 2.0, 0.4, 0.6], [1.0, 0.5], f!, g, (0.0, 15.0), 31)
+    return Model("Modified LV for testing", "Ecology", 2, 4, [1.0, 2.0, 0.4, 0.6], [1.0, 0.5], f!, g, (0.0, 1.0), 31)
 end
 
 function hiv_model()
