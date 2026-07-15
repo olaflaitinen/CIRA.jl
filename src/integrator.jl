@@ -10,12 +10,13 @@ function rk4_step(f!, x, p, t, dt)
     return x .+ (dt / 6.0) .* (k1 .+ 2.0 .* k2 .+ 2.0 .* k3 .+ k4)
 end
 
-function integrate(model::Model, p::Vector{Float64})
+function integrate(model::Model, p::AbstractVector)
     t0, t1 = model.tspan
     n = model.n_times
     dt = (t1 - t0) / (n - 1)
-    x = copy(model.x0)
-    xs = Vector{Vector{Float64}}(undef, n)
+    T = promote_type(eltype(model.x0), eltype(p))
+    x = T.(model.x0)
+    xs = Vector{Vector{T}}(undef, n)
     ts = Vector{Float64}(undef, n)
     xs[1] = copy(x)
     ts[1] = t0
@@ -28,11 +29,12 @@ function integrate(model::Model, p::Vector{Float64})
     return ts, xs
 end
 
-function output_trajectory(model::Model, p::Vector{Float64})
+function output_trajectory(model::Model, p::AbstractVector)
     ts, xs = integrate(model, p)
     g0 = model.g(xs[1], p)
     m = length(g0)
-    vals = Vector{Float64}(undef, length(ts) * m)
+    T = promote_type(eltype(xs[1]), eltype(g0))
+    vals = Vector{T}(undef, length(ts) * m)
     idx = 1
     for i in eachindex(ts)
         gi = model.g(xs[i], p)
