@@ -14,9 +14,9 @@ function integrate(model::Model, p::AbstractVector)
     t0, t1 = model.tspan
     n = model.n_times
     dt = (t1 - t0) / (n - 1)
-    T = promote_type(eltype(model.x0), eltype(p))
-    x = T.(model.x0)
-    xs = Vector{Vector{T}}(undef, n)
+    elt = promote_type(eltype(p), eltype(model.x0))
+    x = convert(Vector{elt}, model.x0)
+    xs = Vector{Vector{elt}}(undef, n)
     ts = Vector{Float64}(undef, n)
     xs[1] = copy(x)
     ts[1] = t0
@@ -32,9 +32,9 @@ end
 function output_trajectory(model::Model, p::AbstractVector)
     ts, xs = integrate(model, p)
     g0 = model.g(xs[1], p)
+    elt = eltype(g0)
     m = length(g0)
-    T = promote_type(eltype(xs[1]), eltype(g0))
-    vals = Vector{T}(undef, length(ts) * m)
+    vals = Vector{elt}(undef, length(ts) * m)
     idx = 1
     for i in eachindex(ts)
         gi = model.g(xs[i], p)
